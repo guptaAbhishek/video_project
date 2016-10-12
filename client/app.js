@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  var app = angular.module('VideoApp',['ngRoute','ui.router']);
+  var app = angular.module('VideoApp',['ngRoute','ui.router','angular-md5']);
     app.config(['$routeProvider','$locationProvider',function($routeProvider,$locationProvider){
       $locationProvider.html5Mode({
         enabled: true,
@@ -9,13 +9,13 @@
 
       $routeProvider
         .when('/login',{
-          templateUrl:'/client/login.html'
+          templateUrl:'/components/login/LoginView.html'
         })
         .when('/dashboard',{
-          templateUrl:'/client/dashboard.html'
+          templateUrl:'/components/dashboard/DashboardView.html'
         })
         .when('/video',{
-          templateUrl:'/client/single.html'
+          templateUrl:'/components/video/VideoView.html'
         })
         .otherwise({
           redirectTo:'/login'

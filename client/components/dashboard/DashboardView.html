@@ -1,0 +1,12 @@
+<div class="" ng-controller="DashboardController as dashCtrl">
+  <div class="" ng-controller="LoginController as loginCtrl">
+    <button type="button" ng-click="logout()" name="button">Logut</button>
+  </div>
+  <div class="" ng-repeat="video in videos.data">
+    <video id="my-video" class="video-js" controls preload="auto" width="640" height="264"
+    poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
+      <source src="{{video.url}}" type='video/mp4'>
+    </video>
+  </div>
+
+</div>

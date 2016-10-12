@@ -13,7 +13,7 @@ var routesAPI = function(app,express){
 	app.post('/video/ratings', helpers.isAuthenticated, videos.rate);
 
 	app.use('/client',express.static('client'));
-
+	app.use('/components',express.static('client/components'));
 	app.get('*',function(req,res){
 		res.render('index.html');
 	});
