@@ -22,5 +22,15 @@
             })
         }
 
+        $scope.getRatings = function(video_id,ratings){
+          DashboardService.getVideoRatings()
+            .success(function(data){
+              $scope.ratings = data;
+            })
+            .error(function(){
+              console.log(status);
+            });
+        }
+
   }]);
 })();

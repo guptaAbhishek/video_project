@@ -23,6 +23,15 @@ angular.module('VideoApp').factory('DashboardService',['$http','$window',functio
           videoId:video_id
         }
       });
+    },
+    getVideoRatings:function(){
+      return $http({
+        url:'/video/ratings',
+        method:'POST',
+        params:{
+          sessionId:sessionId
+        }
+      });
     }
 
   };
