@@ -12,6 +12,18 @@ angular.module('VideoApp').factory('DashboardService',['$http','$window',functio
           limit:5
         }
       });
+    },
+    getVideo:function(video_id){
+      alert(video_id);
+      return $http({
+        url:'/video',
+        method:'GET',
+        params:{
+          sessionId:sessionId,
+          videoId:video_id
+        }
+      });
     }
+
   };
 }]);

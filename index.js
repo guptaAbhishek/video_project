@@ -38,7 +38,7 @@ helperFunctions.populateDb();
 routes(app,express);
 
 // serve video files.
-app.use('/videos',express.static('videos'));
+// app.use('/videos',express.static('videos'));
 // serve client side code.
 // app.use('/client',express.static('client'));
 
