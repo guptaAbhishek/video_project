@@ -35,12 +35,12 @@ mongoose.connect('mongodb://'+configs.dbHost+'/'+configs.dbName);
 helperFunctions.populateDb();
 
 //Initilizing routes.
-routes(app);
+routes(app,express);
 
 // serve video files.
 app.use('/videos',express.static('videos'));
 // serve client side code.
-app.use('/client',express.static('client'));
+// app.use('/client',express.static('client'));
 
 //Finally starting the listener
 app.listen(configs.applicationPort, function () {

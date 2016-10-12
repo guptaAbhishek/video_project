@@ -1,11 +1,11 @@
 //fetching all routes files.
 var api = require('./api');
 
-var routes = function(app){
+var routes = function(app,express){
 	//Initilizing routes
-	api(app);
+	api(app,express);
 
-	
+
 }
 
 module.exports = routes;

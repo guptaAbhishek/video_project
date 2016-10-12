@@ -1,6 +1,5 @@
 (function(){
   'use strict';
-
   var app = angular.module('VideoApp',['ngRoute','ui.router']);
     app.config(['$routeProvider','$locationProvider',function($routeProvider,$locationProvider){
       $locationProvider.html5Mode({
