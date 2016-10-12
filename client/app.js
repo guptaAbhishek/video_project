@@ -1,17 +1,27 @@
 (function(){
   'use strict';
 
-  var app = angular.module('VideoApp',['ui.router'])
-    .config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
-      $urlRouterProvider.otherwise('/');
+  var app = angular.module('VideoApp',['ngRoute','ui.router']);
+    app.config(['$routeProvider','$locationProvider',function($routeProvider,$locationProvider){
+      $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+      });
 
-
-      $stateProvider
-        .state("search",{
-          controller:'',
-          url:'',
-          templateUrl:''
+      $routeProvider
+        .when('/login',{
+          templateUrl:'/client/login.html'
         })
+        .when('/dashboard',{
+          templateUrl:'/client/dashboard.html'
+        })
+        .when('/video',{
+          templateUrl:'/client/single.html'
+        })
+        .otherwise({
+          redirectTo:'/login'
+        })
+
     }])
 
     app.run(['$rootScope','$state','$stateParams',

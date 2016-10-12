@@ -3,10 +3,11 @@ var express = require('express');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var logger = require('morgan');
 var db = mongoose.connection;
 var app = express();
 
-db.on('error', console.error);
+db.on('error',console.error);
 
 //requiring local modeles
 var configs = require('./config');
@@ -22,6 +23,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json.
 app.use(bodyParser.json());
 
+app.set('views',__dirname+'/client');
+app.set('view engine', 'ejs');
+app.use(logger('dev'));
+app.engine('html', require('ejs').renderFile)
+
 
 //connedting to mongoDB
 mongoose.connect('mongodb://'+configs.dbHost+'/'+configs.dbName);
@@ -34,7 +40,7 @@ routes(app);
 // serve video files.
 app.use('/videos',express.static('videos'));
 // serve client side code.
-app.use('/',express.static('client'));
+app.use('/client',express.static('client'));
 
 //Finally starting the listener
 app.listen(configs.applicationPort, function () {

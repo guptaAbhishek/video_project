@@ -11,6 +11,11 @@ var routesAPI = function(app){
 	app.get('/videos', helpers.isAuthenticated, videos.get);
 	app.get('/video', helpers.isAuthenticated, videos.getOne);
 	app.post('/video/ratings', helpers.isAuthenticated, videos.rate);
+
+
+	app.get('*',function(req,res){
+		res.render('index.html');
+	});
 }
 
 
