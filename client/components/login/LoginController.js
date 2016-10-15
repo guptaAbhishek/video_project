@@ -9,8 +9,9 @@
         password = md5.createHash(password || '');
         LoginService.logIn(username,password).then(function(data){
           if(data.sessionId){
-            console.log('logging');
-            $location.path('/dashboard')
+            $location.path('/dashboard').search({sessionId:data.sessionId});
+          }else{
+            console.log('something is wrong')
           }
         });
       }else{
@@ -21,7 +22,7 @@
     // Logout method
     $scope.logout = function(){
       LoginService.logOut();
-      $location.path('/login')
+      $location.path('/login').search('key',null);
     }
 
   }]);

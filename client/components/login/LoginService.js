@@ -16,6 +16,8 @@ angular.module('VideoApp').factory('LoginService',['$http','$window','$q','$loca
       return userInfo;
     },
     logIn: function(username,password){
+      var sessionId;
+      var username;
       var deferred = $q.defer();
       $http.post('/user/auth', {
         username: username,
@@ -25,6 +27,7 @@ angular.module('VideoApp').factory('LoginService',['$http','$window','$q','$loca
           sessionId:result.data.sessionId,
           username:result.data.username
         };
+        console.log('login service',result.data.sessionId);
         $window.sessionStorage['userInfo'] = JSON.stringify(userInfo);
         deferred.resolve(userInfo);
       },function(error){
@@ -33,6 +36,7 @@ angular.module('VideoApp').factory('LoginService',['$http','$window','$q','$loca
       return deferred.promise;
     },
     logOut:function(){
+      var sessionId;
       var deferred = $q.defer();
       $http({
         url:'/user/logout',
@@ -42,8 +46,8 @@ angular.module('VideoApp').factory('LoginService',['$http','$window','$q','$loca
         }
       }).then(function(result){
         $window.sessionStorage["userInfo"] = null;
-
         userInfo = null;
+
         deferred.resolve(result);
       },function(error){
         deferred.reject(error);

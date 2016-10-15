@@ -1,13 +1,14 @@
-angular.module('VideoApp').factory('DashboardService',['$rootScope','$http','$window',function($rootScope,$http,$window){
-  var sessionId = JSON.parse($window.sessionStorage['userInfo']).sessionId;
-  var username = JSON.parse($window.sessionStorage['userInfo']).username;
+angular.module('VideoApp').factory('DashboardService',['$rootScope','$http','$window','$routeParams',function($rootScope,$http,$window,$routeParams){
+
+  console.log($routeParams.sessionId);
   return{
     getVideos:function(){
+
       return $http({
         url:'/videos',
         method:'GET',
         params:{
-          sessionId:sessionId,
+          sessionId:$routeParams.sessionId,
           skip:1,
           limit:5
         }

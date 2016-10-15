@@ -1,4 +1,4 @@
-    angular.module('VideoApp').controller('VideoController',['$window','$rootScope','$scope','VideoService',function($window,$rootScope,$scope,VideoService){
+    angular.module('VideoApp').controller('VideoController',['$window','$rootScope','$scope','VideoService','$routeParams',function($window,$rootScope,$scope,VideoService,$routeParams){
         var vid = $rootScope.videoId;
         var sessionId = JSON.parse($window.sessionStorage['userInfo']).sessionId;
         var username = JSON.parse($window.sessionStorage['userInfo']).username;

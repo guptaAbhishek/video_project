@@ -40,7 +40,7 @@
     <div class="col-md-3" style="margin-top: 35px;" ng-controller="DashboardController as dashboard">
         <div class="row"  ng-repeat="video in videos.data">
             <a href="#"  id="{{video._id}}"  ng-click="getVideo($event)">{{ video.name }}</a>
-            <video id="{{video._id}}"  class="video-js" controls ng-click="getVideo($event)" preload="auto" width="640" height="254"
+            <video id="{{video._id}}" style="cursor: pointer" class="video-js" controls ng-click="getVideo($event)" preload="auto" width="640" height="254"
                    poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
                 <source src="/client/videos/Getting_Started_With_React.mp4" type="video/mp4">
                 <source src="/client/videos/Getting_Started_With_React.webm" type="video/webm">

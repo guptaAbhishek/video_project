@@ -1,4 +1,3 @@
-console.log('in Rating Stars ');
 angular.module('VideoApp').directive('starRating',
     function() {
         return {

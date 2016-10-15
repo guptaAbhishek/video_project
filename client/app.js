@@ -1,7 +1,8 @@
 (function(){
   'use strict';
-  var app = angular.module('VideoApp',['ngRoute','ui.router','angular-md5']);
-    app.config(['$routeProvider','$locationProvider',function($routeProvider,$locationProvider){
+  var app = angular.module('VideoApp',['ngRoute','ui.router','angular-md5','angular-loading-bar']);
+    app.config(['$routeProvider','$locationProvider','cfpLoadingBarProvider',function($routeProvider,$locationProvider,cfpLoadingBarProvider){
+      cfpLoadingBarProvider.includeSpinner = false;
       $locationProvider.html5Mode({
         enabled: true,
         requireBase: false
@@ -47,7 +48,7 @@
     app.run(['$rootScope','$location','$window',
       function($rootScope,$location){
         $rootScope.$on("$routeChangeSuccess",function(userInfo){
-          console.log(userInfo);
+          // console.log(userInfo);
           // $location.path('/dashboard');
         });
 
