@@ -1,7 +1,8 @@
 (function(){
-  angular.module('VideoApp').controller('DashboardController',['$rootScope','$scope','$location','DashboardService',function($rootScope,$scope,$location,DashboardService){
+  angular.module('VideoApp').controller('DashboardController',['$window','$rootScope','$scope','$location','DashboardService',function($window,$rootScope,$scope,$location,DashboardService){
 
     $scope.videos = [];
+    $scope.username = JSON.parse($window.sessionStorage['userInfo']).username;
 
       DashboardService.getVideos()
         .success(function(data){

@@ -1,7 +1,7 @@
 .rating{
     color: #a9a9a9;
     margin: 0;
-    padding: 0;
+    padding: 1%;
 }
 
 ul.rating {
@@ -14,9 +14,10 @@ ul.rating {
     padding: 1px;
     text-align: center;
     font-weight: bold;
+    font-size: 20px;
     cursor: pointer;
 }
 
 .rating .filled {
-    color: #21568b;
+    color: #f2b01e;
 }

@@ -42,6 +42,7 @@ angular.module('VideoApp').factory('LoginService',['$http','$window','$q','$loca
         }
       }).then(function(result){
         $window.sessionStorage["userInfo"] = null;
+
         userInfo = null;
         deferred.resolve(result);
       },function(error){

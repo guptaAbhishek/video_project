@@ -1,4 +1,5 @@
-angular.module('VideoApp').service('VideoService',['$http',function($http){
+angular.module('VideoApp').service('VideoService',['$window','$http',function($window,$http){
+    var sessionId = JSON.parse($window.sessionStorage['userInfo']).sessionId;
 
     return{
       getSingleVideo:function(sessionId,videoId){

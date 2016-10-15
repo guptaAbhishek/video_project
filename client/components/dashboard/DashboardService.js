@@ -1,6 +1,5 @@
 angular.module('VideoApp').factory('DashboardService',['$rootScope','$http','$window',function($rootScope,$http,$window){
   var sessionId = JSON.parse($window.sessionStorage['userInfo']).sessionId;
-  console.log('dashboard',sessionId);
   var username = JSON.parse($window.sessionStorage['userInfo']).username;
   return{
     getVideos:function(){

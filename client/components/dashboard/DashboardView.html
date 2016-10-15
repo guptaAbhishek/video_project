@@ -1,18 +1,39 @@
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link"></a></p>
-    </div><!-- /.container-fluid -->
-</nav>
-<div class="container" ng-controller="DashboardController as dashCtrl">
-  <div class="" ng-controller="LoginController as loginCtrl">
-    <button type="button" ng-click="logout()" name="button">Logout</button>
-  </div>
-  <div class="" style="padding:5%;" ng-repeat="video in videos.data">
-    <video id="{{video._id}}" value="{{video._id}}" class="video-js" ng-click="getVideo($event)" controls preload="auto" width="640" height="264"
-    poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
+<div ng-controller="DashboardController as dashboardCrtl">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="navbar-text ">
+                        Welcome <a href="#">{{username | uppercase}}</a> To Crossover Video Player
+                    </h4>
+                </div>
+                <div class="col-md-6">
+                    <a href="#" class="navbar-link">
+                        <div class="" ng-controller="LoginController as loginCtrl">
+                            <button type="button" class="btn btn-danger pull-right" style="margin-top: 1%;" ng-click="logout()" name="button">Logout</button>
+                        </div>
+                    </a>
+                </div>
+            </div>
 
-      <source src="/client/videos/Getting_Started_With_React.mp4" type="video/mp4">
-      <source src="/client/videos/Getting_Started_With_React.webm" type="video/webm">
-    </video>
-  </div>
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4" ng-repeat="video in videos.data" style="border: 0px solid #BBBBBB; margin: 0px;">
+                <a href="#"  id="{{video._id}}"  ng-click="getVideo($event)">{{ video.name }}</a>
+                <video id="{{video._id}}" value="{{video._id}}" class="video-js" ng-click="getVideo($event)" controls preload="auto" width="640" height="264"
+                       poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
+                    <source src="/client/videos/Getting_Started_With_React.mp4" type="video/mp4">
+                    <source src="/client/videos/Getting_Started_With_React.webm" type="video/webm">
+                </video>
+                <div ng-init="rating = star.rating +1"></div>
+                <div class="star-rating" star-rating rating-value="rating" data-max="5" on-rating-selected="rateFunction(rating)"></div>
+                <p>{{ video.description | limitTo: 100 }}{{ video.description.length > 20 ? '...':''}}</p>
+            </div>
+
+        </div>
+    </div>
 </div>
+
+

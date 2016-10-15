@@ -19,6 +19,11 @@
 
       }];
 
+
+
+
+
+
       $routeProvider
         .when('/login',{
           templateUrl:'/components/login/LoginView.html'
@@ -36,6 +41,8 @@
         })
 
     }])
+
+
 
     app.run(['$rootScope','$location','$window',
       function($rootScope,$location){
