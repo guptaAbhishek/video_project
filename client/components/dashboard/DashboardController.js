@@ -1,11 +1,10 @@
 (function(){
-  angular.module('VideoApp').controller('DashboardController',['$scope','DashboardService',function($scope,DashboardService){
+  angular.module('VideoApp').controller('DashboardController',['$rootScope','$scope','$location','DashboardService',function($rootScope,$scope,$location,DashboardService){
 
     $scope.videos = [];
 
       DashboardService.getVideos()
         .success(function(data){
-          console.log(data);
           $scope.videos = data;
         })
         .error(function(){
@@ -13,13 +12,9 @@
         });
 
         $scope.getVideo = function(video_id){
-          DashboardService.getVideo()
-            .success(function(data){
-              $scope.video = data;
-            })
-            .error(function(){
-              console.log(status);
-            })
+          var vId = video_id.target.id;
+          $rootScope.videoId = vId;
+          $location.path('/video');
         }
 
         $scope.getRatings = function(video_id,ratings){

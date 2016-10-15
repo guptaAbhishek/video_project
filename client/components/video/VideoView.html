@@ -1,0 +1,26 @@
+<div ng-init="getSingleVideo()" ng-controller="VideoController as videoCtrl">
+    <div class="" style="padding:5%;">
+        <h2>{{video}}</h2>
+        <video id="{{video._id}}"  class="video-js" controls preload="auto" width="640" height="264"
+               poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
+
+            <source src="/client/videos/Getting_Started_With_React.mp4" type="video/mp4">
+            <source src="/client/videos/Getting_Started_With_React.webm" type="video/webm">
+        </video>
+        <div ng-init="rating = star.rating +1"></div>
+
+        <div class="star-rating" star-rating rating-value="rating"
+
+             data-max="5" on-rating-selected="rateFunction(rating)"></div>
+    </div>
+</div>
+<div ng-controller="DashboardController">
+    <div class="" style="padding:5%;" ng-repeat="video in videos.data">
+        <video id="{{ video._id }}"  class="video-js" ng-click="getVideo($event)" controls preload="auto" width="640" height="264"
+               poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
+
+            <source src="/client/videos/Getting_Started_With_React.mp4" type="video/mp4">
+            <source src="/client/videos/Getting_Started_With_React.webm" type="video/webm">
+        </video>
+    </div>
+</div>

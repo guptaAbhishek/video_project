@@ -1,6 +1,7 @@
-angular.module('VideoApp').factory('DashboardService',['$http','$window',function($http,$window){
-  var sessionId = $window.sessionStorage.sessionId;
-  console.log(sessionId);
+angular.module('VideoApp').factory('DashboardService',['$rootScope','$http','$window',function($rootScope,$http,$window){
+  var sessionId = JSON.parse($window.sessionStorage['userInfo']).sessionId;
+  console.log('dashboard',sessionId);
+  var username = JSON.parse($window.sessionStorage['userInfo']).username;
   return{
     getVideos:function(){
       return $http({
@@ -14,7 +15,6 @@ angular.module('VideoApp').factory('DashboardService',['$http','$window',functio
       });
     },
     getVideo:function(video_id){
-      alert(video_id);
       return $http({
         url:'/video',
         method:'GET',

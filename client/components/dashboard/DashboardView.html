@@ -1,15 +1,18 @@
-<div class="" ng-controller="DashboardController as dashCtrl">
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link"></a></p>
+    </div><!-- /.container-fluid -->
+</nav>
+<div class="container" ng-controller="DashboardController as dashCtrl">
   <div class="" ng-controller="LoginController as loginCtrl">
-    <button type="button" ng-click="logout()" name="button">Logut</button>
+    <button type="button" ng-click="logout()" name="button">Logout</button>
   </div>
   <div class="" style="padding:5%;" ng-repeat="video in videos.data">
-    <h3>{{video._id}}</h3>
-    <button type="button" ng-click="getVideo(video._id)" name="button"></button>
-    <!-- <video id="my-video" class="video-js" ng-click="getVideo('fds')" controls preload="auto" width="640" height="264"
+    <video id="{{video._id}}" value="{{video._id}}" class="video-js" ng-click="getVideo($event)" controls preload="auto" width="640" height="264"
     poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
+
       <source src="/client/videos/Getting_Started_With_React.mp4" type="video/mp4">
       <source src="/client/videos/Getting_Started_With_React.webm" type="video/webm">
-    </video> -->
+    </video>
   </div>
-
 </div>

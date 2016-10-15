@@ -1,21 +1,17 @@
 (function(){
   'use strict';
-  angular.module('VideoApp').controller('LoginController',['$scope','$location','$window','LoginService','AuthService','md5',function($scope,$location,$window,LoginService,AuthService,md5){
+  angular.module('VideoApp').controller('LoginController',['$rootScope','$scope','$location','$window','LoginService','AuthService','md5',function($rootScope,$scope,$location,$window,LoginService,AuthService,md5){
 
     // login method
     $scope.login = function(username,password){
-      console.log('workign');
       if(username !== undefined && password !== undefined){
+        console.log('login controller button clicked');
         password = md5.createHash(password || '');
-        console.log(password);
-        LoginService.logIn(username,
-          password).success(function(data){
-            AuthService.isLogged = true;
-            $window.sessionStorage.sessionId = data.sessionId;
-            $location.path('/dashboard');
-        }).error(function(data){
-            console.log(status);
-            console.log(data);
+        LoginService.logIn(username,password).then(function(data){
+          if(data.sessionId){
+            console.log('logging');
+            $location.path('/dashboard')
+          }
         });
       }else{
         alert('Please Enter the Username/password');
@@ -25,15 +21,7 @@
     // Logout method
     $scope.logout = function(){
       LoginService.logOut();
-      AuthService.isLogged = false;
-      $location.path('/login');
-      delete $window.sessionStorage.sessionId;
-      // if(AuthService.isLogged){
-      //
-      //   LoginService.logOut();
-      //
-      //
-      // }
+      $location.path('/login')
     }
 
   }]);
