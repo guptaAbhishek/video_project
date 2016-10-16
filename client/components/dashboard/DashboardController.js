@@ -13,13 +13,15 @@
                   console.log(status);
               });
 
-
+        // gte the single video while making a http call
 
         $scope.getVideo = function(video_id){
           var vId = video_id.target.id;
           $rootScope.videoId = vId;
           $location.path('/video').search({videoId:vId,sessionId:$scope.sessionId});
         }
+
+        // get the Ratings of the video
 
         $scope.getRatings = function(video_id,ratings){
           DashboardService.getVideoRatings()

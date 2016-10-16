@@ -3,6 +3,7 @@
   var app = angular.module('VideoApp',['ngRoute','ui.router','angular-md5','angular-loading-bar']);
     app.config(['$routeProvider','$locationProvider','cfpLoadingBarProvider',function($routeProvider,$locationProvider,cfpLoadingBarProvider){
       cfpLoadingBarProvider.includeSpinner = false;
+
       $locationProvider.html5Mode({
         enabled: true,
         requireBase: false
@@ -19,11 +20,6 @@
           }
 
       }];
-
-
-
-
-
 
       $routeProvider
         .when('/login',{
@@ -48,11 +44,8 @@
     app.run(['$rootScope','$location','$window',
       function($rootScope,$location){
         $rootScope.$on("$routeChangeSuccess",function(userInfo){
-          // console.log(userInfo);
-          // $location.path('/dashboard');
+          console.log(userInfo);
         });
-
-
 
         $rootScope.$on("$routeChangeError",function(event,curr,pre,eventObj){
           if(eventObj.authenticated === false){

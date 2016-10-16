@@ -11,7 +11,7 @@
           if(data.sessionId){
             $location.path('/dashboard').search({sessionId:data.sessionId});
           }else{
-            console.log('something is wrong')
+            alert('Username/Password combination is incorrect');
           }
         });
       }else{
@@ -23,6 +23,7 @@
     $scope.logout = function(){
       LoginService.logOut();
       $location.path('/login').search('key',null);
+      console.log('not wokring');
     }
 
   }]);

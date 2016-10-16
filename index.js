@@ -13,6 +13,7 @@ db.on('error',console.error);
 var configs = require('./config');
 var routes = require('./routes/routes');
 var userModel = require('./models/users');
+var videoModel = require('./models/videos');
 var helperFunctions = require('./helpers/helperFunctions');
 
 
@@ -38,7 +39,7 @@ helperFunctions.populateDb();
 routes(app,express);
 
 // serve video files.
-// app.use('/videos',express.static('videos'));
+app.use('videos',express.static('videos'));
 // serve client side code.
 // app.use('/client',express.static('client'));
 

@@ -39,7 +39,6 @@ helpers.populateDb = function(){
 
 	var promise2 = Videos.get();
 	promise2.then(function(data){
-		
 		if(data.length){
 			console.log('videos table already populated.');
 		}
