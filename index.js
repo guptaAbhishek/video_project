@@ -40,6 +40,7 @@ routes(app,express);
 
 // serve video files.
 app.use('videos',express.static('videos'));
+app.use('/bower',express.static(__dirname + '/bower_components'));
 // serve client side code.
 // app.use('/client',express.static('client'));
 

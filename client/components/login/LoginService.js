@@ -30,7 +30,7 @@ angular.module('VideoApp').factory('LoginService',['$http','$window','$q','$loca
         $window.sessionStorage['userInfo'] = JSON.stringify(userInfo);
         deferred.resolve(userInfo);
       },function(error){
-
+        console.log('loginService error',error);
         deferred.reject(error);
       });
       return deferred.promise;

@@ -28,10 +28,10 @@
 <div ng-controller="VideoController as videoCtrl">
     <div ng-init="getSingleVideo()" class="col-md-9" style="padding:3%;">
         <p>{{ video.name }}</p>
-        <video id="{{video._id}}"  class="video-js single" controls autoplay preload="auto" width="100%" height="30%"
+        <video class="video-js single" controls autoplay preload="auto" width="100%" height="30%"
                poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
-            <source src="{{ video.url }}" type="video/mp4">
-            <source src="{{ video.url }}" type="video/webm">
+            <source src="{{video.url}}" type="video/mp4">
+            <source src="{{video.url}}" type="video/webm">
         </video>
         <div ng-init="rating = star.rating +1"></div>
         <div class="star-rating" star-rating rating-value="rating" data-max="5" on-rating-selected="rateFunction(rating)"></div>
@@ -39,11 +39,11 @@
     </div>
     <div class="col-md-3" style="margin-top: 35px;" ng-controller="DashboardController as dashboard">
         <div class="row"  ng-repeat="video in videos.data">
-            <a href="#"  id="{{video._id}}"  ng-click="getVideo($event)">{{ video.name }}</a>
+            <a href="#"   ng-click="getVideo($event)">{{ video.name }}</a>
             <video id="{{video._id}}" style="cursor: pointer" class="video-js" controls ng-click="getVideo($event)" preload="auto" width="640" height="254"
                    poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
-                <source src="{{ video.url }}" type="video/mp4">
-                <source src="{{ video.url }}" type="video/webm">
+                <source src="{{video.url}}" type="video/mp4">
+                <source src="{{video.url | webm}}" type="video/webm">
             </video>
             <div ng-init="rating = star.rating +1"></div>
             <div class="star-rating" star-rating rating-value="rating" data-max="5" on-rating-selected="rateFunction(rating)"></div>

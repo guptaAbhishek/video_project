@@ -1,6 +1,6 @@
-angular.module('VideoApp').factory('DashboardService',['$rootScope','$http','$window','$routeParams',function($rootScope,$http,$window,$routeParams){
+angular.module('VideoApp').factory('DashboardService',['$rootScope','$http','$window','$routeParams','$stateParams',function($rootScope,$http,$window,$routeParams,$stateParams){
 
-  console.log($routeParams.sessionId);
+  console.log($stateParams.sessionId);
   return{
     getVideos:function(){
 
@@ -8,7 +8,7 @@ angular.module('VideoApp').factory('DashboardService',['$rootScope','$http','$wi
         url:'/videos',
         method:'GET',
         params:{
-          sessionId:$routeParams.sessionId,
+          sessionId:$stateParams.sessionId,
           skip:1,
           limit:5
         }
@@ -19,7 +19,7 @@ angular.module('VideoApp').factory('DashboardService',['$rootScope','$http','$wi
         url:'/video',
         method:'GET',
         params:{
-          sessionId:sessionId,
+          sessionId:$stateParams.sessionId,
           videoId:video_id
         }
       });
@@ -29,7 +29,7 @@ angular.module('VideoApp').factory('DashboardService',['$rootScope','$http','$wi
         url:'/video/ratings',
         method:'POST',
         params:{
-          sessionId:sessionId
+          sessionId:$stateParams.sessionId
         }
       });
     }

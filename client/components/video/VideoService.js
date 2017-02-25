@@ -13,9 +13,20 @@ angular.module('VideoApp').service('VideoService',['$window','$http',function($w
           });
       },
 
+      getVideos:function(sessionId){
+          return $http({
+              url:'/videos',
+              method:'GET',
+              params:{
+                  sessionId:sessionId
+              }
+          });
+      },
       rateViedo:function (sessionId,videoId,rating) {
           return $http.post('/video/ratings?sessionId='+sessionId,{videoId:videoId,rating:rating});
       }
+
+
     };
 
 }]);

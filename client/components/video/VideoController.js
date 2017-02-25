@@ -18,12 +18,25 @@
       $scope.getSingleVideo = function () {
         VideoService.getSingleVideo(sessionId,vid)
             .success(function(data){
+                console.log('single video',data);
               $scope.video = data.data;
+              console.log('nesdfsdf',$scope.video);
             })
             .error(function(){
               console.log(status);
             })
-      }
+      };
+
+      $scope.getVideos = function(){
+        VideoService.getVideos(sessionId)
+            .success(function(res){
+                console.log(res);
+                $scope.videos = res;
+            })
+            .error(function(error){
+               $scope.error = error;
+            });
+      };
 
       $scope.getRatingsOfVideo = function(){
 
