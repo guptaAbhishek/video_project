@@ -12,14 +12,20 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+        'bower_components/jquery/dist/jquery.js',
         'bower_components/angular/angular.js',
         'bower_components/angular-mocks/angular-mocks.js',
         'bower_components/angular-resource/angular-resource.js',
         'bower_components/angular-ui-router/release/angular-ui-router.js',
         'client/assets/js/angular/angular-md5.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.js',
         'client/dist/js/magic.min.js',
         'client/app.js',
-        'test/*.specs.js'
+        'client/min/app.js',
+        'client/components/**/*.js',
+        'test/controller/*.js',
+        'test/filter/*.js',
+        'test/directive/*.js'
     ],
 
 
@@ -29,8 +35,12 @@ module.exports = function(config) {
 
 
     preprocessors: {
+        'client/components/**/*.html':['ng-html2js']
     },
 
+    ngHtml2JsPreprocessor:{
+        moduleName:'templates'
+    },
 
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     reporters: ['spec'],

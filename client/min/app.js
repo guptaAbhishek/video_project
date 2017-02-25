@@ -69,20 +69,20 @@
 (function(){
   angular.module('VideoApp').controller('DashboardController',['$window','$rootScope','$scope','$state','$stateParams','$location','DashboardService','VideoService',function($window,$rootScope,$scope,$state,$stateParams,$location,DashboardService,VideoService){
 
-    $scope.videos = [];
+    // $scope.videos = [];
 
-    $scope.username = JSON.parse($window.sessionStorage['userInfo']).username;
-    $scope.sessionId = JSON.parse($window.sessionStorage['userInfo']).sessionId;
+
+    // $scope.username = JSON.parse($window.sessionStorage['userInfo']).username;
+    // $scope.sessionId = JSON.parse($window.sessionStorage['userInfo']).sessionId;
 
         // gte the single video while making a http call
       $scope.loadMore = function(){
           VideoService.getVideos($stateParams.sessionId).success(function(data){
-            $scope.videos = data;
-            console.log(data);
-        }).error(function(err){
-            $scope.error = err;
-        });
-
+                $scope.videos = data;
+                console.log(data);
+            }).error(function(err){
+                $scope.error = err;
+            });
       };
 
       $scope.loadMore();
@@ -108,7 +108,7 @@
   }]);
 })();
 
-angular.module('VideoApp').factory('DashboardService',['$rootScope','$http','$window','$routeParams','$stateParams',function($rootScope,$http,$window,$routeParams,$stateParams){
+angular.module('VideoApp').factory('DashboardService',['$rootScope','$http','$window','$stateParams',function($rootScope,$http,$window,$stateParams){
 
   console.log($stateParams.sessionId);
   return{
@@ -119,6 +119,7 @@ angular.module('VideoApp').factory('DashboardService',['$rootScope','$http','$wi
         method:'GET',
         params:{
           sessionId:$stateParams.sessionId
+
         }
       });
     },
@@ -146,23 +147,12 @@ angular.module('VideoApp').factory('DashboardService',['$rootScope','$http','$wi
 }]);
 
 (function(){
-
     'use strict';
-
     angular.module('VideoApp').filter('webm',['$log',function($log){
-
         return function (input) {
-            if(input !== 'undefined' || input !== null){
-                console.log(input);
-                var str = input.split('.mp4');
-                return str[0]+'.webm';
-            }else {
-                throw new Error('VideoTypeFilter.js : input null or undefined ')
-            }
+            return input ? input.split('.mp4')[0]+'.webm' : input;
         }
     }]);
-
-
 })();
 angular.module('VideoApp').factory('AuthService',function(){
   var auth = {
@@ -313,7 +303,7 @@ angular.module('VideoApp').directive('starRating',
         };
     }
 );
-    angular.module('VideoApp').controller('VideoController',['$window','$rootScope','$scope','VideoService','$routeParams','$stateParams','$state',function($window,$rootScope,$scope,VideoService,$routeParams,$stateParams,$state){
+    angular.module('VideoApp').controller('VideoController',['$window','$rootScope','$scope','VideoService','$stateParams','$state',function($window,$rootScope,$scope,VideoService,$stateParams,$state){
         var vid = $rootScope.videoId;
         var sessionId = JSON.parse($window.sessionStorage['userInfo']).sessionId;
         var username = JSON.parse($window.sessionStorage['userInfo']).username;
@@ -353,8 +343,10 @@ angular.module('VideoApp').directive('starRating',
   }]);
 
 
-angular.module('VideoApp').service('VideoService',['$window','$http',function($window,$http){
-    var sessionId = JSON.parse($window.sessionStorage['userInfo']).sessionId;
+angular.module('VideoApp').service('VideoService',['$window','$http','$stateParams',function($window,$http,$stateParams){
+
+
+    // var sessionId = JSON.parse($window.sessionStorage['userInfo']).sessionId;
 
     return{
       getSingleVideo:function(sessionId,videoId){

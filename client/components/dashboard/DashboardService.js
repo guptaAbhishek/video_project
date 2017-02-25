@@ -1,4 +1,4 @@
-angular.module('VideoApp').factory('DashboardService',['$rootScope','$http','$window','$routeParams','$stateParams',function($rootScope,$http,$window,$routeParams,$stateParams){
+angular.module('VideoApp').factory('DashboardService',['$rootScope','$http','$window','$stateParams',function($rootScope,$http,$window,$stateParams){
 
   console.log($stateParams.sessionId);
   return{
@@ -9,6 +9,7 @@ angular.module('VideoApp').factory('DashboardService',['$rootScope','$http','$wi
         method:'GET',
         params:{
           sessionId:$stateParams.sessionId
+
         }
       });
     },

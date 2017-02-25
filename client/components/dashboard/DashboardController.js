@@ -1,20 +1,20 @@
 (function(){
   angular.module('VideoApp').controller('DashboardController',['$window','$rootScope','$scope','$state','$stateParams','$location','DashboardService','VideoService',function($window,$rootScope,$scope,$state,$stateParams,$location,DashboardService,VideoService){
 
-    $scope.videos = [];
+    // $scope.videos = [];
 
-    $scope.username = JSON.parse($window.sessionStorage['userInfo']).username;
-    $scope.sessionId = JSON.parse($window.sessionStorage['userInfo']).sessionId;
+
+    // $scope.username = JSON.parse($window.sessionStorage['userInfo']).username;
+    // $scope.sessionId = JSON.parse($window.sessionStorage['userInfo']).sessionId;
 
         // gte the single video while making a http call
       $scope.loadMore = function(){
           VideoService.getVideos($stateParams.sessionId).success(function(data){
-            $scope.videos = data;
-            console.log(data);
-        }).error(function(err){
-            $scope.error = err;
-        });
-
+                $scope.videos = data;
+                console.log(data);
+            }).error(function(err){
+                $scope.error = err;
+            });
       };
 
       $scope.loadMore();
