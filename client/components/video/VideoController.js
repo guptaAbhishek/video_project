@@ -1,46 +1,37 @@
-    angular.module('VideoApp').controller('VideoController',['$window','$rootScope','$scope','VideoService','$routeParams',function($window,$rootScope,$scope,VideoService,$routeParams){
+    angular.module('VideoApp').controller('VideoController',['$window','$rootScope','$scope','VideoService','$routeParams','$stateParams','$state',function($window,$rootScope,$scope,VideoService,$routeParams,$stateParams,$state){
         var vid = $rootScope.videoId;
         var sessionId = JSON.parse($window.sessionStorage['userInfo']).sessionId;
         var username = JSON.parse($window.sessionStorage['userInfo']).username;
 
       $scope.rating = 5;
 
+      console.log('in video controller');
+
       $scope.rateFunction = function(rating) {
         VideoService.rateViedo(sessionId,vid,rating)
             .success(function(data){
-              console.log(data);
+
             })
             .error(function () {
               console.log(status);
             })
       };
 
-      $scope.getSingleVideo = function () {
-        VideoService.getSingleVideo(sessionId,vid)
+      $scope.getSingle = function () {
+        VideoService.getSingleVideo($stateParams.sessionId,$stateParams.videoId)
             .success(function(data){
-                console.log('single video',data);
-              $scope.video = data.data;
-              console.log('nesdfsdf',$scope.video);
+              $scope.single_video = data.data;
+              console.log($scope.single_video);
+                $state.go('/video',{videoId:vId,sessionId:$stateParams.sessionId});
             })
-            .error(function(){
-              console.log(status);
+            .error(function(err){
+                $scope.error = err;
+                console.log(status);
             })
       };
 
-      $scope.getVideos = function(){
-        VideoService.getVideos(sessionId)
-            .success(function(res){
-                console.log(res);
-                $scope.videos = res;
-            })
-            .error(function(error){
-               $scope.error = error;
-            });
-      };
+        $scope.getSingle();
 
-      $scope.getRatingsOfVideo = function(){
-
-      }
 
   }]);
 

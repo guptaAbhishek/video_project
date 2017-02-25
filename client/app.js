@@ -30,7 +30,7 @@
         .state('/dashboard',{
           url:'/dashboard?sessionId',
           templateUrl:'/components/dashboard/DashboardView.html',
-            controller:'DashboardController',
+            controller:'DashboardController as dashboardCtrl',
           resolve:{loginRequired:loginRequired}
         })
         .state('/video',{
@@ -53,7 +53,7 @@
     app.run(['$rootScope','$location','$window',
       function($rootScope,$location){
         $rootScope.$on("$routeChangeSuccess",function(userInfo){
-          console.log(userInfo);
+          // console.log(userInfo);
         });
 
         $rootScope.$on("$routeChangeError",function(event,curr,pre,eventObj){

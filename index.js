@@ -37,12 +37,21 @@ helperFunctions.populateDb();
 
 //Initilizing routes.
 routes(app,express);
+// require('./routes/api')(app);
+// require('./routes/routes')(app);
+//
+
 
 // serve video files.
 app.use('videos',express.static('videos'));
 app.use('/bower',express.static(__dirname + '/bower_components'));
 // serve client side code.
 // app.use('/client',express.static('client'));
+
+
+app.get('*',function(req,res){
+  res.render('/client/index.html');
+});
 
 //Finally starting the listener
 app.listen(configs.applicationPort, function () {

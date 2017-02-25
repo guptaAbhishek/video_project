@@ -1,4 +1,4 @@
-<div ng-init="gettingVideos()" ng-controller="DashboardController as dashboardCrtl">
+<div data-ng-controller="DashboardController as dashboardCtrl">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="row">
@@ -18,14 +18,14 @@
 
         </div><!-- /.container-fluid -->
     </nav>
-    <div class="container" ng-controller="VideoController as videoController">
+    <div class="container">
         <div class="row">
             <div class="col-md-4" ng-repeat="video in videos.data track by $index" style=" margin: 0px;">
-                <a href="#"   ng-click="getVideo($event)">{{ video.name }}</a>
-                <video id="{{video._id}}" style="cursor: pointer" value="{{video._id}}" class="video-js" ng-click="getVideo($event)" controls preload="auto" width="640" height="264"
+                <a href="#" ng-click="dashboardCtrl.getSingleVideo($event)">{{ video.name }}</a>
+                <video id="{{video._id}}" style="cursor: pointer" value="{{video._id}}" class="video-js" ng-click="dashboardCtrl.getSingleVideo($event)" controls preload="auto" width="250" height="204"
                        poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
                     <source src="{{video.url}}" type="video/mp4">
-                    <source src="{{video.url | webm}}" type="video/webm">
+                    <source src="{{video.url}}" type="video/webm">
                 </video>
                 <div ng-init="rating = star.rating +1"></div>
                 <div class="star-rating" star-rating rating-value="rating" data-max="5" on-rating-selected="rateFunction(rating)"></div>
@@ -37,7 +37,7 @@
 
     <div class="row" style="text-align: center">
         <div class="col-md-4">
-            <button>Load More..</button>
+            <button ng-click="loadMore()">Load More..</button>
         </div>
 
     </div>

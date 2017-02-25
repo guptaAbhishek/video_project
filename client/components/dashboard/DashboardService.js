@@ -8,9 +8,7 @@ angular.module('VideoApp').factory('DashboardService',['$rootScope','$http','$wi
         url:'/videos',
         method:'GET',
         params:{
-          sessionId:$stateParams.sessionId,
-          skip:1,
-          limit:5
+          sessionId:$stateParams.sessionId
         }
       });
     },
