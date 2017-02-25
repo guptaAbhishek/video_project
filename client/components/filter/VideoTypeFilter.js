@@ -6,15 +6,9 @@
 
         return function (input) {
             if(input !== 'undefined' || input !== null){
+                console.log(input);
                 var str = input.split('.mp4');
-
-                if(str === 'undefined' || str === null){
-                    str = input+'.webm';
-                }else{
-                    str = str[0]+'.webm';
-                }
-                return str;
-
+                return str[0]+'.webm';
             }else {
                 throw new Error('VideoTypeFilter.js : input null or undefined ')
             }

@@ -24,13 +24,14 @@
 
         </div><!-- /.container-fluid -->
     </nav>
-<div ng-controller="VideoController as videoCtrl">
-    <div class="col-md-9" style="padding:3%;">
+<div ng-controller="VideoController as videoCtrl" >
+    <div ng-if="single_video.length !== 0" class="col-md-9" style="padding:3%;">
         <p>{{ single_video.name }}</p>
-        <video id="{{single_video._id}}" class="video-js single" controls width="100%" height="30%"
+        <video id="{{single_video._id}}" class="video-js single" controls preload="auto" autoplay width="100%" height="254"
                poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
-            <source src="{{single_video.url}}" type="video/mp4">
-            <source src="{{single_video.url}}" type="video/webm">
+            <!--<source src="{{single_video.url}}" type="video/mp4">-->
+            <source src="{{single_video.url || '/client/videos/Getting_Started_With_React.js.mp4'}}" type="video/mp4">
+            <source src="{{single_video.url || '/client/videos/Getting_Started_With_React.js.webm'}}" type="video/webm">
         </video>
         <div ng-init="rating = star.rating +1"></div>
         <div class="star-rating" star-rating rating-value="rating" data-max="5" on-rating-selected="rateFunction(rating)"></div>
@@ -44,7 +45,6 @@
             <video id="{{video._id}}" style="cursor: pointer" class="video-js" controls ng-click="dashboardCtrl.getSingleVideo($event)" preload="auto" width="640" height="254"
                    poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
                 <source src="{{video.url}}" type="video/mp4">
-                <source src="{{video.url}}" type="video/webm">
             </video>
             <div ng-init="rating = star.rating +1"></div>
             <div class="star-rating" star-rating rating-value="rating" data-max="5" on-rating-selected="rateFunction(rating)"></div>

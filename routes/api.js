@@ -9,7 +9,7 @@ var routesAPI = function(app,express){
 
 	//video routes
 	app.get('/videos', helpers.isAuthenticated, videos.get);
-	app.get('/video', helpers.isAuthenticated, videos.getOne);
+    app.get('/video', helpers.isAuthenticated, videos.getOne);
 	app.post('/video/ratings', helpers.isAuthenticated, videos.rate);
 
 	app.use('/client',express.static('client'));
@@ -17,6 +17,7 @@ var routesAPI = function(app,express){
 	app.get('*',function(req,res){
 		res.render('index.html');
 	});
+
 }
 
 

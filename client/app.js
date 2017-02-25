@@ -1,7 +1,7 @@
 (function(){
   'use strict';
-  var app = angular.module('VideoApp',['ngRoute','ui.router','angular-md5','angular-loading-bar']);
-    app.config(['$routeProvider','$locationProvider','$stateProvider','$urlRouterProvider','cfpLoadingBarProvider',function($routeProvider,$locationProvider,$stateProvider,$urlRouterProvider,cfpLoadingBarProvider){
+  var app = angular.module('VideoApp',['ui.router','angular-md5','angular-loading-bar']);
+    app.config(['$locationProvider','$stateProvider','$urlRouterProvider','cfpLoadingBarProvider',function($locationProvider,$stateProvider,$urlRouterProvider,cfpLoadingBarProvider){
       cfpLoadingBarProvider.includeSpinner = false;
 
       $locationProvider.html5Mode({
@@ -33,8 +33,8 @@
             controller:'DashboardController as dashboardCtrl',
           resolve:{loginRequired:loginRequired}
         })
-        .state('/video',{
-          url:'/video?videoId?sessionId',
+        .state('/videoview',{
+          url:'/videoview?videoId?sessionId',
             controller:'VideoController',
             views:{
               'video':{

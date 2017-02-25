@@ -3,6 +3,13 @@ body{
 	font-size:100%;
 	font-family: 'Open Sans', sans-serif;
 }
+
+.video-js .vjs-tech{
+    width: 650px;
+
+    height: 250px;
+}
+
 body a {
   transition: 0.5s all;
   -webkit-transition: 0.5s all;

@@ -18,11 +18,13 @@
       };
 
       $scope.getSingle = function () {
+          console.log('calling getSingle');
         VideoService.getSingleVideo($stateParams.sessionId,$stateParams.videoId)
             .success(function(data){
+                console.log(data);
               $scope.single_video = data.data;
               console.log($scope.single_video);
-                $state.go('/video',{videoId:vId,sessionId:$stateParams.sessionId});
+                $state.go('/videoview',{videoId:$stateParams.videoId,sessionId:$stateParams.sessionId});
             })
             .error(function(err){
                 $scope.error = err;
@@ -30,7 +32,7 @@
             })
       };
 
-        $scope.getSingle();
+      $scope.getSingle();
 
 
   }]);

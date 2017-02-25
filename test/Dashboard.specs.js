@@ -1,24 +1,44 @@
-var $rootScope,
-    $scope,
-    controller;
+// describe('DashboardController',function(){
+//     beforeEach(module('VideoApp'));
+//
+//     var $controller,$filter;
+//
+//     beforeEach(inject(function (_$controller_,_$filter_) {
+//
+//         // The injector unwraps the underscores (_) from around the parameter names when matching
+//         $controller = _$controller_;
+//
+//         $filter = _$filter_;
+//
+//         describe('webm filter test',function(){
+//             it('should convert the .mp4 type file to .webm type',function(){
+//                 var filter = $filter('webm');
+//                 var input = '/client/node_js_app.mp4';
+//                 expect(webm(input)).toBe('/client/node_js_app.mp4');
+//             });
+//         });
+//
+//
+//
+//
+//         // describe('$scope.videos',function(){
+//         //     it('$scope.videos should not be null',function(){
+//         //         var $scope = {};
+//         //
+//         //         var controller = $controller('DashboardController',{$scope:$scope});
+//         //
+//         //         $scope.loadMore();
+//         //
+//         //         expect($scope.videos).toBe
+//         //
+//         //     })
+//         // })
+//
+//     }));
+//
+//
+// })
 
-beforeEach(function(){
-
-    module('VideoApp');
-
-    inject(function($injector){
-        $rootScope = $injector.get('$rootScope');
-        $scope = $rootScope.$new();
-        controller = $injector.get('$controller')('DashboardController',{$scope:$scope});
-    });
-});
-
-describe('Initialization Dashboard Controller',function(){
-    it('should set the value of $scope.username',function(){
-        expect($scope.username).toBeDefined();
-    })
-
+describe('sum ',function(){
+    expect(2+2).toBe(4);
 })
-
-
-

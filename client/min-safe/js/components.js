@@ -7,9 +7,7 @@
     $scope.sessionId = JSON.parse($window.sessionStorage['userInfo']).sessionId;
 
         // gte the single video while making a http call
-    console.log('in dashbaoard controller');
       $scope.loadMore = function(){
-        console.log('loadmore');
           VideoService.getVideos($stateParams.sessionId).success(function(data){
             $scope.videos = data;
             console.log(data);
@@ -19,13 +17,12 @@
 
       };
 
-
       $scope.loadMore();
 
 
       this.getSingleVideo = function(video_id){
           var vId = video_id.target.id;
-          $state.go('/video',{videoId:vId,sessionId:$stateParams.sessionId});
+          $state.go('/videoview',{videoId:video_id.target.id,sessionId:$stateParams.sessionId});
       };
 
         // get the Ratings of the video
@@ -88,15 +85,9 @@ angular.module('VideoApp').factory('DashboardService',['$rootScope','$http','$wi
 
         return function (input) {
             if(input !== 'undefined' || input !== null){
+                console.log(input);
                 var str = input.split('.mp4');
-
-                if(str === 'undefined' || str === null){
-                    str = input+'.webm';
-                }else{
-                    str = str[0]+'.webm';
-                }
-                return str;
-
+                return str[0]+'.webm';
             }else {
                 throw new Error('VideoTypeFilter.js : input null or undefined ')
             }
@@ -274,11 +265,13 @@ angular.module('VideoApp').directive('starRating',
       };
 
       $scope.getSingle = function () {
+          console.log('calling getSingle');
         VideoService.getSingleVideo($stateParams.sessionId,$stateParams.videoId)
             .success(function(data){
+                console.log(data);
               $scope.single_video = data.data;
               console.log($scope.single_video);
-                $state.go('/video',{videoId:vId,sessionId:$stateParams.sessionId});
+                $state.go('/videoview',{videoId:$stateParams.videoId,sessionId:$stateParams.sessionId});
             })
             .error(function(err){
                 $scope.error = err;
@@ -286,7 +279,7 @@ angular.module('VideoApp').directive('starRating',
             })
       };
 
-        $scope.getSingle();
+      $scope.getSingle();
 
 
   }]);
