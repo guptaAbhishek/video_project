@@ -19,19 +19,35 @@
         </div><!-- /.container-fluid -->
     </nav>
     <div class="container">
+
         <div class="row">
             <div class="col-md-4" ng-repeat="video in videos.data track by $index" style=" margin: 0px;">
                 <a href="#" ng-click="dashboardCtrl.getSingleVideo($event)">{{ video.name }}</a>
-                <video id="{{video._id}}" style="cursor: pointer" value="{{video._id}}" class="video-js" ng-click="dashboardCtrl.getSingleVideo($event)" controls preload="auto" width="250" height="204"
-                       poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
-                    <source src="{{video.url}}" type="video/mp4">
-                </video>
+                <!--<video id="{{video._id}}" style="cursor: pointer" value="{{video._id}}" class="video-js" ng-click="dashboardCtrl.getSingleVideo($event)" controls preload="auto" width="250" height="204"-->
+                       <!--poster="MY_VIDEO_POSTER.jpg" data-setup="{}">-->
+                    <!--<source src="{{video.url}}" type="video/mp4">-->
+                <!--</video>-->
+                <div class="videogular-container">
+                    <videogular
+                            ng-click="dashboardCtrl.getSingleVideo($event)"
+                            vg-player-ready="dashboardCtrl.onPlayerReady($API, $index)"
+                            vg-update-state="dashboardCtrl.onUpdateState($state, $index)"
+                            style="width: 250px; height:204px;"
+                            vg-theme="dashboardCtrl.config.theme.url">
+                        <vg-media
+                                vg-src="video.url"
+                                vg-tracks="dashboardCtrl.config.tracks"
+                                vg-native-controls="true">
+                        </vg-media>
+                    </videogular>
+                </div>
                 <div ng-init="rating = star.rating +1"></div>
                 <div class="star-rating" star-rating rating-value="video.ratings[video.ratings.length-1]" data-max="5" on-rating-selected="rateFunction(rating,video)"></div>
                 <p>{{ video.description | limitTo: 100 }}{{ video.description.length > 20 ? '...':''}}</p>
-            </div>
 
+            </div>
         </div>
+
     </div>
 
     <div class="row" style="text-align: center">

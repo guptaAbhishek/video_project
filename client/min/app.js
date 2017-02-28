@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  var app = angular.module('VideoApp',['ui.router','angular-md5','angular-loading-bar']);
+  var app = angular.module('VideoApp',['ui.router','angular-md5','angular-loading-bar','ngSanitize','com.2fdevs.videogular']);
     app.config(['$locationProvider','$stateProvider','$urlRouterProvider','cfpLoadingBarProvider',function($locationProvider,$stateProvider,$urlRouterProvider,cfpLoadingBarProvider){
       cfpLoadingBarProvider.includeSpinner = false;
 
@@ -67,12 +67,51 @@
 })();
 
 (function(){
-  angular.module('VideoApp').controller('DashboardController',['$window','$rootScope','$scope','$state','$stateParams','$location','DashboardService','VideoService',function($window,$rootScope,$scope,$state,$stateParams,$location,DashboardService,VideoService){
+  angular.module('VideoApp').controller('DashboardController',['$window','$rootScope','$scope','$state','$stateParams','$location','DashboardService','VideoService','$sce',function($window,$rootScope,$scope,$state,$stateParams,$location,DashboardService,VideoService,$sce){
 
     // $scope.videos = [];
 
 
-    // $scope.username = JSON.parse($window.sessionStorage['userInfo']).username;
+      this.config = {
+          preload: "none",
+          sources: [
+              {src: $sce.trustAsResourceUrl("http://static.videogular.com/assets/videos/videogular.mp4"), type: "video/mp4"},
+              {src: $sce.trustAsResourceUrl("http://static.videogular.com/assets/videos/videogular.webm"), type: "video/webm"},
+              {src: $sce.trustAsResourceUrl("http://static.videogular.com/assets/videos/videogular.ogg"), type: "video/ogg"}
+          ],
+          tracks: [
+              {
+                  src: "http://www.videogular.com/assets/subs/pale-blue-dot.vtt",
+                  kind: "subtitles",
+                  srclang: "en",
+                  label: "English",
+                  default: ""
+              }
+          ],
+          theme: {
+              url: "http://www.videogular.com/styles/themes/default/latest/videogular.css"
+          }
+      };
+
+
+      this.players = [];
+
+      this.onPlayerReady = function (API, index) {
+          this.players[index] = API;
+      };
+
+      this.onUpdateState = function (state, index) {
+          if (state === 'play') {
+              // pause other players
+              for (var i=0, l=this.players.length; i<l; i++) {
+                  if (i !== index) {
+                      this.players[i].pause();
+                  }
+              }
+          }
+      };
+
+    $scope.username = JSON.parse($window.sessionStorage['userInfo']).username;
     // $scope.sessionId = JSON.parse($window.sessionStorage['userInfo']).sessionId;
 
         // gte the single video while making a http call
