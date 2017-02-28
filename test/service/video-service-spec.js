@@ -19,34 +19,24 @@ describe('Video service test',function(){
     });
 
 
-    describe('VideoService.getSingleVideo() test',function(){
-        var originalTimeout;
+    describe('VideoService',function(){
 
-        beforeEach(function() {
-            originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
-            jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
+
+        it('VideoService.getSingleVideo() : should get single video from the database ',function(){
+            $httpBackend
+                .expect('GET', 'http://localhost:8080/videoview')
+                .respond(200, { videoId: '580286691b27c20e4558cfa1', sessionId:'wLaM1sLHAk1pqeHcicfQdlHcaAbWlCDD'});
+            $httpBackend.flush();
         });
 
-        afterEach(function() {
-            jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
+        it('VideoService.getVideos() : should get single video from the database ',function(){
+
         });
 
-       it('should get single video from the database ',function(){
-           $.ajax({
-               url: 'http://localhost:8080/video?sessionId=elpCA9lEOU2jMxOPfqK7QD3UK3xgImhl&videoId=580286691b27c20e4558cf9f',
-               dataType: 'json',
-               success: function (data, response) {
-                   // Here your expected using data
-                   expect(1).toBe(1);
-                   doneFn();
-               },
-               error: function (data, response) {
-                   // Here your expected using data
-                   expect(1).toBe(1);
-                   doneFn();
-               }
-           });
-       });
+
+        it('VideoService.rateViedo() : should get single video from the database ',function(){
+
+        });
 
 
     });
