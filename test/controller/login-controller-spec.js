@@ -1,4 +1,4 @@
-describe('DashboardController',function(){
+describe('LoginController',function(){
 
 
     var $rootScope,
@@ -11,7 +11,7 @@ describe('DashboardController',function(){
 
         inject(function($rootScope,$controller){
             $scope = $rootScope.$new();
-            dashboardController = $controller('DashboardController',{
+            dashboardController = $controller('LoginController',{
                 $scope:$scope
             });
         })
@@ -48,9 +48,9 @@ describe('DashboardController',function(){
     });
 
     describe('this.getSingleVideo',function(){
-       it('should be undefined outside the controller',function(){
-           expect(dashboardController.getSingleVideo()).toBeDefined();
-       })
+        it('should be undefined outside the controller',function(){
+            expect(dashboardController.getSingleVideo()).not.toBeDefined();
+        })
     });
 
     describe('$scope.getRatings',function(){

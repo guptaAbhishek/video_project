@@ -25,4 +25,6 @@ describe('Directive testing',function(){
         });
     });
 
+
+
 });

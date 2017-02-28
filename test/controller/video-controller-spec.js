@@ -1,9 +1,9 @@
-describe('DashboardController',function(){
+describe('VideoController',function(){
 
 
     var $rootScope,
         $scope,
-        dashboardController;
+        videoController;
 
 
     beforeEach(function(){
@@ -11,7 +11,7 @@ describe('DashboardController',function(){
 
         inject(function($rootScope,$controller){
             $scope = $rootScope.$new();
-            dashboardController = $controller('DashboardController',{
+            videoController = $controller('VideoController',{
                 $scope:$scope
             });
         })
