@@ -3,15 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9f604082-13a4-49d8-83ce-faa117dbed95" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app.js" afterPath="$PROJECT_DIR$/client/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/dashboard/DashboardController.js" afterPath="$PROJECT_DIR$/client/components/dashboard/DashboardController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/dashboard/DashboardView.html" afterPath="$PROJECT_DIR$/client/components/dashboard/DashboardView.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/video/VideoView.html" afterPath="$PROJECT_DIR$/client/components/video/VideoView.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/dist/js/magic.min.js" afterPath="$PROJECT_DIR$/client/dist/js/magic.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/index.html" afterPath="$PROJECT_DIR$/client/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/min-safe/app.js" afterPath="$PROJECT_DIR$/client/min-safe/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/min-safe/js/components.js" afterPath="$PROJECT_DIR$/client/min-safe/js/components.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/min/app.js" afterPath="$PROJECT_DIR$/client/min/app.js" />
     </list>
     <ignored path="crossover_video.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,7 +36,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DashboardController.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DashboardController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/components/dashboard/DashboardController.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="657">
@@ -67,11 +59,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VideoView.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="VideoView.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/components/video/VideoView.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="588">
-              <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+            <state relative-caret-position="243">
+              <caret line="31" column="34" lean-forward="false" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
               <folding>
                 <element signature="n#style#0;n#videogular#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#videogular#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -185,10 +177,10 @@
         <option value="$PROJECT_DIR$/client/assets/css/style.css" />
         <option value="$PROJECT_DIR$/client/components/dashboard/DashboardController.js" />
         <option value="$PROJECT_DIR$/client/components/video/VideoController.js" />
-        <option value="$PROJECT_DIR$/client/components/video/VideoView.html" />
         <option value="$PROJECT_DIR$/client/components/dashboard/DashboardView.html" />
         <option value="$PROJECT_DIR$/client/app.js" />
         <option value="$PROJECT_DIR$/client/index.html" />
+        <option value="$PROJECT_DIR$/client/components/video/VideoView.html" />
       </list>
     </option>
   </component>
@@ -522,12 +514,12 @@
       <workItem from="1487950228010" duration="279000" />
       <workItem from="1487954816142" duration="15743000" />
       <workItem from="1488038693523" duration="6687000" />
-      <workItem from="1488093357855" duration="7427000" />
+      <workItem from="1488093357855" duration="7669000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63833000" />
+    <option name="totallyTimeSpent" value="64075000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -884,17 +876,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/video/VideoView.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#videogular#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#videogular#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
@@ -943,6 +924,17 @@
         <state relative-caret-position="657">
           <caret line="76" column="8" lean-forward="false" selection-start-line="76" selection-start-column="8" selection-end-line="76" selection-end-column="8" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/video/VideoView.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="31" column="34" lean-forward="false" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
+          <folding>
+            <element signature="n#style#0;n#videogular#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#videogular#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

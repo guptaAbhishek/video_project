@@ -29,6 +29,7 @@
         <p>{{single_video.name }}</p>
         <videogular
                 id="{{single_video._id}}"
+                vg-auto-play="true"
                 ng-click="dashboardCtrl.getSingleVideo($event)"
                 vg-player-ready="dashboardCtrl.onPlayerReady($API, $index)"
                 vg-update-state="dashboardCtrl.onUpdateState($state, $index)"
