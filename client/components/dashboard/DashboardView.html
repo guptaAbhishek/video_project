@@ -27,7 +27,7 @@
                     <source src="{{video.url}}" type="video/mp4">
                 </video>
                 <div ng-init="rating = star.rating +1"></div>
-                <div class="star-rating" star-rating rating-value="rating" data-max="5" on-rating-selected="rateFunction(rating)"></div>
+                <div class="star-rating" star-rating rating-value="video.ratings[video.ratings.length-1]" data-max="5" on-rating-selected="rateFunction(rating,video)"></div>
                 <p>{{ video.description | limitTo: 100 }}{{ video.description.length > 20 ? '...':''}}</p>
             </div>
 
@@ -41,5 +41,29 @@
 
     </div>
 </div>
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+        $(".video-js").each(function (videoIndex) {
+            console.log('working');
+            console.log(videoIndex);
+            var videoId = $(this).attr("id");
+
+            console.log('videoId',videoId);
+            videojs(videoId).ready(function(){
+                this.on("play", function(e) {
+                    //pause other video
+                    $(".video-js").each(function (index) {
+                        if (videoIndex !== index) {
+                            this.player.pause();
+                        }
+                    });
+                });
+            });
+        });
+    });
+</script>
+
 
 

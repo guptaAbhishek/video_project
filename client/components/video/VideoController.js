@@ -7,15 +7,6 @@
 
       console.log('in video controller');
 
-      $scope.rateFunction = function(rating) {
-        VideoService.rateViedo(sessionId,vid,rating)
-            .success(function(data){
-
-            })
-            .error(function () {
-              console.log(status);
-            })
-      };
 
       $scope.getSingle = function () {
           console.log('calling getSingle');

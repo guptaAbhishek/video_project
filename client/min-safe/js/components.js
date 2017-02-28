@@ -19,6 +19,17 @@
 
       $scope.loadMore();
 
+      $scope.rateFunction = function(rating,video) {
+          console.log('rating',rating,'video',video);
+          VideoService.rateViedo($stateParams.sessionId,video._id,rating)
+              .success(function(data){
+                  console.log(data);
+              })
+              .error(function () {
+                  console.log(status);
+              })
+      };
+
 
       this.getSingleVideo = function(video_id){
           var vId = video_id.target.id;
@@ -244,15 +255,6 @@ angular.module('VideoApp').directive('starRating',
 
       console.log('in video controller');
 
-      $scope.rateFunction = function(rating) {
-        VideoService.rateViedo(sessionId,vid,rating)
-            .success(function(data){
-
-            })
-            .error(function () {
-              console.log(status);
-            })
-      };
 
       $scope.getSingle = function () {
           console.log('calling getSingle');

@@ -19,6 +19,17 @@
 
       $scope.loadMore();
 
+      $scope.rateFunction = function(rating,video) {
+          console.log('rating',rating,'video',video);
+          VideoService.rateViedo($stateParams.sessionId,video._id,rating)
+              .success(function(data){
+                  console.log(data);
+              })
+              .error(function () {
+                  console.log(status);
+              })
+      };
+
 
       this.getSingleVideo = function(video_id){
           var vId = video_id.target.id;
