@@ -1,9 +1,9 @@
 (function(){
   angular.module('VideoApp').controller('DashboardController',['$window','$rootScope','$scope','$state','$stateParams','$location','DashboardService','VideoService','$sce',function($window,$rootScope,$scope,$state,$stateParams,$location,DashboardService,VideoService,$sce){
 
-    // $scope.videos = [];
-
-
+      $scope.initialComplete = false;
+      $scope.rated = false;
+      $scope.gotRatings = false;
       this.config = {
           preload: "none",
           sources: [
@@ -43,12 +43,13 @@
           }
       };
 
-    $scope.username = JSON.parse($window.sessionStorage['userInfo']).username;
+    // $scope.username = JSON.parse($window.sessionStorage['userInfo']).username;
     // $scope.sessionId = JSON.parse($window.sessionStorage['userInfo']).sessionId;
 
         // gte the single video while making a http call
       $scope.loadMore = function(){
           VideoService.getVideos($stateParams.sessionId).success(function(data){
+                $scope.initialComplete = true;
                 $scope.videos = data;
                 console.log(data);
             }).error(function(err){
@@ -59,14 +60,20 @@
       $scope.loadMore();
 
       $scope.rateFunction = function(rating,video) {
-          console.log('rating',rating,'video',video);
-          VideoService.rateViedo($stateParams.sessionId,video._id,rating)
-              .success(function(data){
-                  console.log(data);
-              })
-              .error(function () {
-                  console.log(status);
-              })
+          if(video !== undefined && rating !== undefined){
+              VideoService.rateViedo($stateParams.sessionId,video._id,rating)
+                  .success(function(data){
+                      $scope.rated = true;
+                      console.log(data);
+                  })
+                  .error(function () {
+                      console.log(status);
+                  });
+
+          }else{
+              throw new Error('rating/video not defined');
+          }
+
       };
 
 
@@ -74,6 +81,7 @@
           var vId = video_id.currentTarget.attributes[0].nodeValue;
           console.log('vid = > ',vId);
           $state.go('/videoview',{videoId:vId,sessionId:$stateParams.sessionId});
+          $scope.states = '/videoview';
       };
 
         // get the Ratings of the video
@@ -81,12 +89,14 @@
         $scope.getRatings = function(video_id,ratings){
           DashboardService.getVideoRatings()
             .success(function(data){
+              $scope.gotRatings = true;
               $scope.ratings = data;
             })
             .error(function(){
               console.log(status);
             });
         }
+
 
   }]);
 })();

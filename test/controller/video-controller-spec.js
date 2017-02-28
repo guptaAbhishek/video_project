@@ -48,9 +48,9 @@ describe('DashboardController',function(){
     });
 
     describe('this.getSingleVideo',function(){
-       it('should be undefined outside the controller',function(){
-           expect(dashboardController.getSingleVideo()).not.toBeDefined();
-       })
+        it('should be undefined outside the controller',function(){
+            expect(dashboardController.getSingleVideo()).not.toBeDefined();
+        })
     });
 
     describe('$scope.getRatings',function(){

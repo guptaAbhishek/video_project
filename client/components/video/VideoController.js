@@ -1,7 +1,7 @@
     angular.module('VideoApp').controller('VideoController',['$window','$rootScope','$scope','VideoService','$stateParams','$state',function($window,$rootScope,$scope,VideoService,$stateParams,$state){
         var vid = $rootScope.videoId;
-        var sessionId = JSON.parse($window.sessionStorage['userInfo']).sessionId;
-        var username = JSON.parse($window.sessionStorage['userInfo']).username;
+        // var sessionId = JSON.parse($window.sessionStorage['userInfo']).sessionId;
+        // var username = JSON.parse($window.sessionStorage['userInfo']).username;
 
       $scope.rating = 5;
 
