@@ -21,14 +21,11 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-md-4" ng-repeat="video in videos.data track by $index" style=" margin: 0px;">
+            <div class="col-md-4" ng-repeat="video in videos.data track by $index" style=" margin: 0px;" infinite-scroll='loadMore()' infinite-scroll-distance='2'>
                 <a href="#" ng-click="dashboardCtrl.getSingleVideo($event)">{{ video.name }}</a>
-                <!--<video id="{{video._id}}" style="cursor: pointer" value="{{video._id}}" class="video-js" ng-click="dashboardCtrl.getSingleVideo($event)" controls preload="auto" width="250" height="204"-->
-                       <!--poster="MY_VIDEO_POSTER.jpg" data-setup="{}">-->
-                    <!--<source src="{{video.url}}" type="video/mp4">-->
-                <!--</video>-->
                 <div class="videogular-container">
                     <videogular
+                            id="{{video._id}}"
                             ng-click="dashboardCtrl.getSingleVideo($event)"
                             vg-player-ready="dashboardCtrl.onPlayerReady($API, $index)"
                             vg-update-state="dashboardCtrl.onUpdateState($state, $index)"

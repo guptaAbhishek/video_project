@@ -26,13 +26,20 @@
     </nav>
 <div ng-controller="VideoController as videoCtrl" >
     <div ng-if="single_video.length !== 0" class="col-md-9" style="padding:3%;">
-        <p>{{ single_video.name }}</p>
-        <video id="{{single_video._id}}" class="video-js single" controls preload="auto" autoplay width="100%" height="254"
-               poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
-            <!--<source src="{{single_video.url}}" type="video/mp4">-->
-            <source src="{{single_video.url || '/client/videos/Getting_Started_With_React.js.mp4'}}" type="video/mp4">
-            <source src="{{single_video.url || '/client/videos/Getting_Started_With_React.js.webm'}}" type="video/webm">
-        </video>
+        <p>{{single_video.name }}</p>
+        <videogular
+                id="{{single_video._id}}"
+                ng-click="dashboardCtrl.getSingleVideo($event)"
+                vg-player-ready="dashboardCtrl.onPlayerReady($API, $index)"
+                vg-update-state="dashboardCtrl.onUpdateState($state, $index)"
+                style="width: 100%; height:100%;"
+                vg-theme="dashboardCtrl.config.theme.url">
+            <vg-media
+                    vg-src="single_video.url"
+                    vg-tracks="dashboardCtrl.config.tracks"
+                    vg-native-controls="true">
+            </vg-media>
+        </videogular>
         <div ng-init="rating = star.rating +1"></div>
         <div class="star-rating" star-rating rating-value="rating" data-max="5" on-rating-selected="rateFunction(rating)"></div>
         <p>{{ single_video.description }}</p>
@@ -42,10 +49,21 @@
     <div class="col-md-3" style="margin-top: 35px;">
         <div class="row"  ng-repeat="video in videos.data">
             <a href="#"   ng-click="dashboardCtrl.getSingleVideo($event)">{{ video.name }}</a>
-            <video id="{{video._id}}" style="cursor: pointer" class="video-js" controls ng-click="dashboardCtrl.getSingleVideo($event)" preload="auto" width="640" height="254"
-                   poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
-                <source src="{{video.url}}" type="video/mp4">
-            </video>
+            <videogular
+                    id="{{video._id}}"
+                    ng-click="dashboardCtrl.getSingleVideo($event)"
+                    vg-player-ready="dashboardCtrl.onPlayerReady($API, $index)"
+                    vg-update-state="dashboardCtrl.onUpdateState($state, $index)"
+                    style="width: 250px; height:204px;"
+                    vg-theme="dashboardCtrl.config.theme.url">
+                <vg-media
+                        vg-src="video.url"
+                        vg-tracks="dashboardCtrl.config.tracks"
+                        vg-native-controls="true">
+                </vg-media>
+            </videogular>
+
+
             <div ng-init="rating = star.rating +1"></div>
             <div class="star-rating" star-rating rating-value="rating" data-max="5" on-rating-selected="rateFunction(rating)"></div>
             <p>{{ video.description | limitTo:120 }} {{video.description.lenth > 120 ? '...' : '' }} </p>

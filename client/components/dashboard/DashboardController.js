@@ -71,8 +71,9 @@
 
 
       this.getSingleVideo = function(video_id){
-          var vId = video_id.target.id;
-          $state.go('/videoview',{videoId:video_id.target.id,sessionId:$stateParams.sessionId});
+          var vId = video_id.currentTarget.attributes[0].nodeValue;
+          console.log('vid = > ',vId);
+          $state.go('/videoview',{videoId:vId,sessionId:$stateParams.sessionId});
       };
 
         // get the Ratings of the video

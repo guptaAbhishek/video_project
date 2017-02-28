@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  var app = angular.module('VideoApp',['ui.router','angular-md5','angular-loading-bar','ngSanitize','com.2fdevs.videogular']);
+  var app = angular.module('VideoApp',['ui.router','angular-md5','angular-loading-bar','ngSanitize','com.2fdevs.videogular','infinite-scroll']);
     app.config(['$locationProvider','$stateProvider','$urlRouterProvider','cfpLoadingBarProvider',function($locationProvider,$stateProvider,$urlRouterProvider,cfpLoadingBarProvider){
       cfpLoadingBarProvider.includeSpinner = false;
 

@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  var app = angular.module('VideoApp',['ui.router','angular-md5','angular-loading-bar','ngSanitize','com.2fdevs.videogular']);
+  var app = angular.module('VideoApp',['ui.router','angular-md5','angular-loading-bar','ngSanitize','com.2fdevs.videogular','infinite-scroll']);
     app.config(['$locationProvider','$stateProvider','$urlRouterProvider','cfpLoadingBarProvider',function($locationProvider,$stateProvider,$urlRouterProvider,cfpLoadingBarProvider){
       cfpLoadingBarProvider.includeSpinner = false;
 
@@ -139,8 +139,9 @@
 
 
       this.getSingleVideo = function(video_id){
-          var vId = video_id.target.id;
-          $state.go('/videoview',{videoId:video_id.target.id,sessionId:$stateParams.sessionId});
+          var vId = video_id.currentTarget.attributes[0].nodeValue;
+          console.log('vid = > ',vId);
+          $state.go('/videoview',{videoId:vId,sessionId:$stateParams.sessionId});
       };
 
         // get the Ratings of the video
